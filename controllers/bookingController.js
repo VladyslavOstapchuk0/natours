@@ -46,7 +46,7 @@ const createBookingCheckout = async (session) => {
   const sessionDup = await stripe.checkout.sessions.retrieve(session.id, {
     expand: ['line_items'],
   });
-  console.log(sessionDup);
+  console.log(sessionDup.line_items.data);
   // const price = sessionDup.line_items[0].amount / 100;
   // console.log(`Price is ${price}`);
   await Booking.create({ tour, user });

@@ -13,6 +13,7 @@ const bookingSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
+    required: [true, 'Booking must have a price'],
   },
   createdAt: {
     type: Date,

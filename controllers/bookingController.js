@@ -42,15 +42,14 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
 const createBookingCheckout = async (session) => {
   const tour = session.client_reference_id;
-  console.log(`Tour is ${tour}`);
   const user = (await User.findOne({ email: session.customer_email })).id;
-  console.log(`User is ${user}`);
   const sessionDup = await stripe.checkout.sessions.retrieve(session.id, {
     expand: ['line_items'],
   });
-  const price = sessionDup.line_items[0].amount / 100;
-  console.log(`Price is ${price}`);
-  await Booking.create({ tour, user, price });
+  console.log(sessionDup);
+  // const price = sessionDup.line_items[0].amount / 100;
+  // console.log(`Price is ${price}`);
+  await Booking.create({ tour, user });
 };
 
 exports.webhookCheckout = (req, res, next) => {

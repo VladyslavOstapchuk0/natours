@@ -62,9 +62,11 @@ app.use(
         "'self'",
         'https://api.stripe.com',
         'https://errors.stripe.com',
-        'ws://127.0.0.1:62629/',
+        'https://natours-vladyslav.herokuapp.com',
         'api.mapbox.com',
         'events.mapbox.com',
+        'wss://natours-vladyslav.herokuapp.com:64324',
+        'wss://natours-vladyslav.herokuapp.com',
       ],
     },
   })
